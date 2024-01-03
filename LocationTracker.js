@@ -4,8 +4,7 @@ import { View, Text, PermissionsAndroid, StyleSheet,TouchableOpacity } from 'rea
 import Geolocation from '@react-native-community/geolocation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FlatList } from 'react-native-gesture-handler';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-
+import Map from './Map';
 
 const LocationTracker = () => {
   const [isTracking, setIsTracking] = React.useState(false);
@@ -124,32 +123,9 @@ const LocationTracker = () => {
 
 
 
-      <MapView
-
-  style={styles.map}
-
-  provider={PROVIDER_GOOGLE}
-
-  initialRegion={{
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0,
-    longitudeDelta: 0.05,
-  }}
->
-
-<Marker
 
 
-  coordinate={{
-
-    latitude: locationData.latitude? latitude : 0,
-    longitude: locationData.longitude ? longitude : 0
-          
-  }}
-
-/>
-    </MapView> 
+    <Map coordinates={locationData}/>
 
     </View>
   );
